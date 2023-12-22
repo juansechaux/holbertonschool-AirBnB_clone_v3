@@ -128,3 +128,10 @@ class TestFileStorage(unittest.TestCase):
         storage = FileStorage()
         non_existing_state = storage.get(State, "no_existe")
         self.assertIsNone(non_existing_state)
+
+    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    def test_count_total_objects(self):
+        '''Check if the count method return an type int'''
+        storage = FileStorage()
+        total_states = storage.count(State)
+        self.assertIsInstance(total_states, int)
