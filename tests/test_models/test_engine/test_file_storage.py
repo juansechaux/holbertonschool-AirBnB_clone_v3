@@ -119,5 +119,5 @@ class TestFileStorage(unittest.TestCase):
         """the get method in fileStorage"""
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_count(self):
+    def test_db_storage_count(self):
         """Test for count method"""
