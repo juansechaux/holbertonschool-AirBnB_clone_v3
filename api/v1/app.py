@@ -5,6 +5,7 @@ Contains entrypoint
 from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
+from os import getenv
 
 
 app = Flask(__name__)
@@ -25,4 +26,10 @@ def not_found_error(e):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, threaded=True)
+    HBNB_API_HOST = getenv('HBNB_API_HOST')
+    HBNB_API_PORT = getenv('HBNB_API_PORT')
+    if HBNB_API_HOST is None:
+        HBNB_API_HOST = '0.0.0.0.'
+    if HBNB_API_PORT is None:
+        HBNB_API_PORT = '5000'
+    app.run(debug=True, threaded=True, host=HBNB_API_HOST, port=HBNB_API_PORT)
