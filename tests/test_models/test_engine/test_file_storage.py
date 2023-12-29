@@ -115,7 +115,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(json.loads(string), json.loads(js))
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_get(self):
+    def test_get_1(self):
         '''Test that return the obj to serch'''
         storage = FileStorage()
         first_state_id = list(storage.all(State).values())[0].id
@@ -130,7 +130,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNone(non_existing_state)
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_count(self):
+    def test_count_1(self):
         '''Test the count method with all objs'''
         storage = FileStorage()
         count_all_obj = storage.count()
@@ -150,5 +150,5 @@ class TestFileStorage(unittest.TestCase):
         """the get method in fileStorage"""
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_db_storage_count(self):
+    def test_count(self):
         """Test for count method"""

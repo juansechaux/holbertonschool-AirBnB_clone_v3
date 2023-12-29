@@ -103,7 +103,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNone(non_existing_state)
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
-    def test_get(self):
+    def test_get_db_storage(self):
         """the get method in DBstorage"""
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
