@@ -19,7 +19,7 @@ def clean_up_all(exc):
 
 
 @app.errorhandler(404)
-def not_found_error(error):
+def not_found_error(e):
     '''Error handler 404'''
     return {'error': 'Not Found'}, 404
 
