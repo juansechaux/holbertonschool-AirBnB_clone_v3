@@ -2,7 +2,7 @@
 """
 Contains entrypoint
 """
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 
@@ -16,6 +16,12 @@ def clean_up_all(exc):
     '''Función de limpieza que se ejecutará al
     finalizar el contexto de la aplicación'''
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    '''Error handler 404'''
+    return jsonify({'error': 'Not Found'}), 404
 
 
 if __name__ == "__main__":
