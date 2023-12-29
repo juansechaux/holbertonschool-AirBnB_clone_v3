@@ -101,3 +101,11 @@ class TestFileStorage(unittest.TestCase):
         storage = DBStorage()
         non_existing_state = storage.get(State, "no_existe")
         self.assertIsNone(non_existing_state)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_get(self):
+        """the get method in DBstorage"""
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_db_storage_count(self):
+        """Test for count method"""
