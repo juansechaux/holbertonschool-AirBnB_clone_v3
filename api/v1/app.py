@@ -21,7 +21,7 @@ def clean_up_all(exc):
 @app.errorhandler(404)
 def not_found_error(error):
     '''Error handler 404'''
-    return jsonify({'error': 'Not Found'}), 404
+    return {'error': 'Not Found'}, 404
 
 
 if __name__ == "__main__":
