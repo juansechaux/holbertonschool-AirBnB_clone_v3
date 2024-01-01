@@ -43,7 +43,7 @@ def delete_an_state(state_id):
     return {}, 200
 
 
-@app_views.route('/states', methods=['POST'])
+@app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_new_state():
     if request.is_json:
         data = request.get_json()
