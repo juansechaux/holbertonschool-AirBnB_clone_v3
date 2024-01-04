@@ -57,8 +57,8 @@ def create_new_city(state_id):
             storage.new(new_city)
             storage.save()
             return jsonify(new_city.to_dict()), 201
-        return {'Missing name'}, 400
-    return {'Not a JSON'}, 400
+        return {'error': 'Missing name'}, 400
+    return {'error': 'Not a JSON'}, 400
 
 
 @app_views.route('/cities/<city_id>', methods=['PUT'])
@@ -73,4 +73,4 @@ def update_city_data(city_id):
             setattr(city, key, value)
         storage.save()
         return jsonify(city.to_dict()), 200
-    return {'Not a JSON'}, 400
+    return {'error': 'Not a JSON'}, 400
