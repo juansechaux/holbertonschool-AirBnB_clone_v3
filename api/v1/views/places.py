@@ -56,7 +56,8 @@ def create_new_place(city_id):
             if user is None:
                 return jsonify({'error': 'Not found'}), 404
             if "name" in data:
-                new_place = Place(**data)
+                new_data = dict(data, **{'city_id': city_id})
+                new_place = Place(**new_data)
                 storage.new(new_place)
                 storage.save()
                 return jsonify(new_place.to_dict()), 201
