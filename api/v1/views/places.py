@@ -52,7 +52,7 @@ def create_new_place(city_id):
     if request.is_json:
         data = request.get_json()
         if "user_id" in data:
-            user = storage.get(User, data['user_id'])
+            user = storage.get(User, **data['user_id'])
             if user is None:
                 return jsonify({'error': 'Not found'}), 404
             if "name" in data:
