@@ -22,9 +22,7 @@ def get_all_reviews(place_id):
     list_of_reviews = []
     for review in all_reviews.values():
         if review.place_id == place_id:
-            list_of_reviews.append(review)
-    if len(list_of_reviews) == 0:
-        return {}
+            list_of_reviews.append(review.to_dict())
     return jsonify(list_of_reviews)
 
 
