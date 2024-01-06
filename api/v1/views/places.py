@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the app_views of user
+Contains the app_views of places
 """
 from flask import jsonify, request
 from api.v1.views import app_views
