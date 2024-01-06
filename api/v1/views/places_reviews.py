@@ -23,6 +23,8 @@ def get_all_reviews(place_id):
     for review in all_reviews.values():
         if review.place_id == place_id:
             list_of_reviews.append(review)
+    if len(list_of_reviews) == 0:
+        return {}
     return jsonify(list_of_reviews)
 
 
@@ -55,7 +57,7 @@ def create_one_review(place_id):
         if "user_id" in data:
             user = storage.get(User, data['user_id'])
             if user is None:
-                return {'error': 'Missing user_id'}, 400
+                return {'error': 'Missing user_id'}, 404
             if "text" in data:
                 new_dict = dict(data, **{'place_id': place_id})
                 new_review = Review(**new_dict)
