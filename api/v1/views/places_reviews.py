@@ -61,7 +61,7 @@ def create_one_review(place_id):
                 new_review = Review(**new_dict)
                 storage.new(new_review)
                 storage.save()
-                return jsonify(new_review.to_dict())
+                return jsonify(new_review.to_dict()), 201
             return {'error': 'Missing text'}, 400
         return {'error': 'Missing user_id'}, 400
     return {'error': 'Not a JSON'}, 400
